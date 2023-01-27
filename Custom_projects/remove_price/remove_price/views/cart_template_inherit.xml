@@ -1,0 +1,28 @@
+<odoo>
+    <!-- CART TEMPLATE INHERIT TO REMOVE PRICE -->
+    <template id="cart_template_inherit" inherit_id="website_sale.cart_lines" name="Remove Price">
+        <!-- TO REMOVE HEADING -->
+        <xpath expr="//th[hasclass('td-price')]" position="replace">
+        </xpath>
+        <!-- TO REMOVE COLUMN -->
+        <xpath expr="//td[hasclass('td-price')]" position="replace">
+        </xpath>
+    </template>
+    <!-- TO REMOVE PRICE ON CART HOVER (ON TOP) -->
+    <template id="cart_button_hover_template_inherit" inherit_id="website_sale.total" name="Remove Price">
+         <xpath expr="//div[@id='cart_total']" position="replace">
+        </xpath>
+    </template>
+    <!-- TO REMOVE THE ORDER SUMMARY AND TOTAL -->
+    <template id="cart_summary_template_inherit" inherit_id="website_sale.short_cart_summary" name="Remove Price">
+         <xpath expr="//div[hasclass('js_cart_summary')]" position="replace">
+        </xpath>
+    </template>
+
+
+    <template id="cart_inherit" inherit_id="website_sale.cart" name="Change URL">
+         <xpath expr="//a[hasclass('float-end')]" position="attributes">
+            <attribute name="t-attf-href">/change_state</attribute>
+        </xpath>
+    </template>
+</odoo>

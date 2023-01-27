@@ -1,0 +1,161 @@
+<odoo>
+    <template id="shop_template_inherit" inherit_id="website_sale.products" name="Pager Editor">
+        <!-- TO PLACE THE PAGER AT BOTTOM RIGHT -->
+        <xpath expr="//div[hasclass('products_pager')]" position="attributes">
+            <attribute name="class">d-flex justify-content-end pt-5 pb-3</attribute>
+        </xpath>
+        <!-- TO ADD THE PAGER AT TOP RIGHT -->
+        <xpath expr="//div[hasclass('o_wsale_products_grid_table_wrapper')]" position="before">
+            <div class="products_pager d-flex justify-content-end pt-3 pb-3">
+                <t t-call="website.pager" />
+            </div>
+        </xpath>
+    </template>
+    <!-- TEMPLATE TO REPLACE THE POSITION OF PRODUCT DESCRIPTION BELOW THE PRODUCT IMAGE -->
+    <template id="product_page_template_inherit" inherit_id="website_sale.product" name="Description Position">
+        <xpath expr="//p[hasclass('text-muted')]" position="replace">
+        </xpath>
+        <xpath expr="//div[contains(@t-attf-class, 'o_wsale_product_images')]" position="inside">
+            <p class="text-muted my-2 position-relative" placeholder="A short description that will also appear on documents." t-field="product.description_sale" />
+        </xpath>
+    </template>
+    <!-- TEMPLATE TO SHOW VARIANT COUNT,COLOR -->
+    <template id="product_info_template_inherit" inherit_id="website_sale.products_item" name="Product Information">
+        <xpath expr="//div[hasclass('o_wsale_product_btn')]" position="inside">
+            <div class="my_attributes">
+                <t t-if="product.product_variant_count > 1">
+                    <span>+ </span>
+                    <span t-out="(product.product_variant_count)-1" />
+                    <span>Variant/s more..</span>
+                </t>
+                <br></br>
+                <t t-value="product.attribute_line_ids.filtered(lambda val:val.attribute_id.display_type=='color')" t-set="attribute_line" />
+                <span t-if="attribute_line">Color:</span>
+                <t t-foreach="attribute_line.value_ids" t-as="values">
+                    <span t-out="values.name+','" />
+                </t>
+            </div>
+        </xpath>
+    </template>
+    <!-- PRODUCT PAGE TEMPLATE INHERIT FOR ADDING TABS -->
+    <template id="custom_tabs" inherit_id="website_sale.product" name="Tabs">
+        <xpath expr="//div[@t-field='product.website_description']" position="after">
+            <t t-if="product.tab_ids">
+                <section class="s_tabs pt48 pb48" data-vcss="001">
+                    <div class="container">
+                        <div class="s_tabs_main">
+                            <div class="s_tabs_nav mb-3">
+                                <ul class="nav nav-pills" role="tablist">
+                                    <t t-set="i" t-value="0" />
+                                    <t t-foreach="product.tab_ids.filtered(lambda x:x.is_active==True)" t-as="tab_line">
+                                        <li class="nav-item" groups="website.group_website_designer" t-if="not tab_line.snippet_content">
+                                            <a t-attf-class="nav-link {{'active' if i==0 else '' }}" data-bs-toggle="tab" t-att-href="'#tab_%s'%tab_line.id" role="tab" t-attf-aria-controls="tab_{{tab_line.id}}" t-esc="tab_line.name" t-attf-aria-selected="{{'true' if i==0 else 'false'}}" t-att-id="'nav_tabs_link_%s' %tab_line.id" />
+                                            <span>Inside If</span>
+                                        </li>
+                                        <t t-else="">
+                                            <span>Inside Else</span>
+                                            <li class="nav-item" groups="base.group_public">
+                                                <a t-attf-class="nav-link {{'active' if i==0 else '' }}" data-bs-toggle="tab" t-att-href="'#tab_%s'%tab_line.id" role="tab" t-attf-aria-controls="tab_{{tab_line.id}}" t-esc="tab_line.name" t-attf-aria-selected="{{'true' if i==0 else 'false'}}" t-att-id="'nav_tabs_link_%s' %tab_line.id" />
+                                            </li>
+                                        </t>
+                                        <t t-set="i" t-value="i+1" />
+                                    </t>
+                                </ul>
+                            </div>
+                            <div class="s_tabs_content tab-content">
+                                <t t-set="i" t-value="0" />
+                                <t t-foreach="product.tab_ids.filtered(lambda x:x.is_active==True)" t-as="tab_line">
+                                    <div t-attf-class="tab-pane fade {{'show active' if i==0 else '' }}" t-att-id="'tab_%s'%(tab_line.id)" role="tabpanel" t-attf-aria-labelledby="nav_tabs_link_{{tab_line.id}}" groups="website.group_website_designer" t-if="not tab_line.snippet_content">
+                                        <span>Inside If</span>
+                                        <div class="oe_structure oe_empty">
+                                            <section class="s_text_block">
+                                                <div class="container s_allow_columns">
+                                                    <div itemprop="description" t-field="tab_line.snippet_content" class="oe_structure oe_empty mt16" id="product_full_description_template" />
+                                                    <!-- <t t-esc="tab_line.name" /> -->
+                                                </div>
+                                            </section>
+                                        </div>
+                                    </div>
+                                    <t t-else="">
+                                        <span>Inside Else</span>
+                                        <div t-attf-class="tab-pane fade {{'show active' if i==0 else '' }}" t-att-id="'tab_%s'%(tab_line.id)" role="tabpanel" t-attf-aria-labelledby="nav_tabs_link_{{tab_line.id}}">
+                                            <div class="oe_structure oe_empty" groups=" base.group_public">
+                                                <section class="s_text_block">
+                                                    <div class="container s_allow_columns">
+                                                        <div itemprop="description" t-field="tab_line.snippet_content" class="oe_structure oe_empty mt16" id="product_full_description_template" />
+                                                        <!-- <t t-esc="tab_line.name" /> -->
+                                                    </div>
+                                                </section>
+                                            </div>
+                                        </div>
+                                    </t>
+                                    <t t-set="i" t-value="i+1" />
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </t>
+        </xpath>
+    </template>
+    <!-- PRODUCT PAGE TEMPLATE TO INSERT THE STICKY CONTENT -->
+    <template id="sticky_div" inherit_id="website_sale.product" name="Sticky Bar">
+        <!-- <xpath expr="//section[@id='product_detail']" position="after"> -->
+        <xpath expr="//div[@id='product_detail_main']" position="after">
+            <center>
+                <div class="fixed-bottom border border-dark container text-bg-light p-3">
+                    <div class="my_content">
+                        <form t-if="product._is_add_to_cart_possible()" action="/shop/cart/update" method="POST">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                            <div class="js_product js_main_product mb-3">
+                                <div>
+                                </div>
+                                <t t-placeholder="select">
+                                    <input type="hidden" class="product_id" name="product_id" t-att-value="product_variant.id" />
+                                    <input type="hidden" class="product_template_id" name="product_template_id" t-att-value="product.id" />
+                                    <ul class="d-none js_add_cart_variants mb-0" t-att-data-attribute_exclusions="{'exclusions: []'}" />
+                                </t>
+                                <img t-attf-src="/web/image/product.template/#{product.id}/image_1920" style="width:5%;" />
+                                <br></br>
+                                <span t-out="product.name" class="font-weight-bold" />
+                                <br></br>
+                                <span class="oe_price" style="white-space: nowrap;" t-esc="combination_info['price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}" />
+                                <span itemprop="price" style="display:none;" t-esc="combination_info['price']" />
+                                <span itemprop="priceCurrency" style="display:none;" t-esc="website.currency_id.name" />
+                                <span t-attf-class="text-danger oe_default_price ms-1 h5 {{'' if combination_info['has_discounted_price'] else 'd-none'}}" style="text-decoration: line-through; white-space: nowrap;" t-esc="combination_info['list_price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}" itemprop="listPrice" />
+                                <br></br>
+                                <span t-out="product.categ_id.name" class="font-weight-bold" />
+                                
+                                <div id="o_wsale_cta_wrapper" class="d-flex flex-wrap align-items-center" style="margin-left: 40%;">
+                                    <t t-set="hasQuantities" t-value="false" />
+                                    <t t-set="hasBuyNow" t-value="false" />
+                                    <t t-set="ctaSizeBig" t-value="not hasQuantities or not hasBuyNow" />
+                                    <div id="add_to_cart_wrap" t-attf-class="{{'d-none' if combination_info['prevent_zero_price_sale'] else 'd-inline-flex'}} align-items-center mb-2 me-auto">
+                                        <center>
+                                            <a role="button" id="add_to_cart" t-attf-class="btn btn-primary js_check_product a-submit flex-grow-1 #{'btn-lg' if ctaSizeBig else ''}" href="#">
+                                                <i class="fa fa-shopping-cart me-2" />
+                                                <span style="font-weight: bold">ADD TO CART</span>
+                                            </a>
+                                        </center>
+                                    </div>
+                                    <div id="product_option_block" class="d-flex flex-wrap w-100" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </center>
+        </xpath>
+    </template>
+
+    <!-- TEMPLATE TO IMPLEMENT HIDE AND SHOW(TOGGLE) -->
+    <template id="hide_show_content" inherit_id="website_sale.products_attributes" name="Toggle">
+        <xpath expr="//b[hasclass('o_products_attributes_title')]" position="attributes">
+            <attribute name="type">button</attribute>
+            <attribute name="data-bs-toggle">collapse</attribute>
+            <attribute name="aria-expanded">false</attribute>
+            <attribute name="t-attf-data-bs-target">#o_products_attributes_{{a.id}}</attribute>
+            <attribute name="t-attf-aria-controls">o_products_attributes_{{a.id}}</attribute>
+        </xpath>
+    </template>
+</odoo>

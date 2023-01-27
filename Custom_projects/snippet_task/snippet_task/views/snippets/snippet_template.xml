@@ -1,0 +1,97 @@
+<odoo>
+    <!-- STATIC TEMPLATE -->
+    <template id="snippet_template_1" name="My Static Template 1">
+        <section class="oe_structure o_not_editable d-print-none">
+            <div class="row">
+                <div class="col-6" style="margin-top: 8%; margin-left: 7%;">
+                    <span style="font-size: 52px;">
+                        <font class="text-gradient" style="background-image: linear-gradient(135deg, rgb(248, 164, 140) 0%, rgb(232, 78, 72) 100%);">
+                            <strong>Maximus Note 8i</strong>
+                        </font>
+                    </span>
+                    <p>Powered by a 10 nm octa-core Qualcomm Snapdragon 712 AIE<br></br> processor, this phone can seamlessly execute any task.</p>
+                    <div class="row" style="margin-bottom: 4%;">
+                        <div class="col-6">
+                            <h6><b>Wireless Charging</b></h6>
+                            <h6>Full battery in no time</h6>
+                        </div>
+                        <div class="col-6">
+                            <h6><b>Super Fast CPU</b></h6>
+                            <h6>Powerful Performance</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5">
+                            <h6><b>128 GB Harddisk</b></h6>
+                            <h6>More content</h6>
+                        </div>
+                        <br></br>
+                        <div class="col-6" style="margin-left: 3%;">
+                            <h6><b>64 MP Camara</b></h6>
+                            <h6>With super Macro Lens</h6>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-primary mt-4 o_default_snippet_text">Shop Now</a>
+                </div>
+                <div class="col-6" style="margin-left: -10%;">
+                    <img src="/snippet_task/static/images/img1.png" />
+                </div>
+            </div>
+        </section>
+    </template>
+    <template id="snippet_template_2" name="Inner Content Template 1">
+        <div class="snippet_template_2_class">
+            <div class="row" id="myrow">
+                <div class="col-2">
+                    <h6 class="forinline">Free Delivery</h6><i class='fa fa-angle-down' id="icon_id2"></i>
+                    <div class="vertical-line"></div>
+                </div>
+                <div class="col-2">
+                    <p class="forinline">Safe Payment</p><i class='fa fa-angle-down' id="icon_id2"></i>
+                </div>
+                <div class="col 2">
+                    <button class="cont_btn">Help Center</button>
+                </div>
+                <div class="col 2">
+                    <button class="cont_btn">Continue</button>
+                </div>
+                <div class="col 2">
+                    <button class="cont_btn">Continue</button>
+                </div>
+                <div class="col 2">
+                    <button class="cont_btn">Continue</button>
+                </div>
+            </div>
+        </div>
+    </template>
+    <template id="snippet_template_2_options" inherit_id="website.snippet_options">
+        <xpath expr="." position="inside">
+            <div data-selector=".snippet_template_2_class" data-drop-in="h6,img">
+            </div>
+        </xpath>
+    </template>
+    <template id="snippet_template_3" name="Carousel Snippet">
+        <section class="oe_structure">
+            <div class="container">
+                <div class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row">
+                                <div class="col-sm"><img class="d-block w-100" src="https://picsum.photos/100" alt="1 slide" style="height:60%;"/></div>
+                                <div class="col-sm"><img class="d-block w-100" src="https://picsum.photos/100" alt="2 slide" style="height:60%;" /></div>
+                                <div class="col-sm"><img class="d-block w-100" src="https://picsum.photos/50/50" alt="3 slide" style="height:60%;" /></div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row">
+                                <div class="col-sm"><img class="d-block w-100" src="https://picsum.photos/100" alt="4 slide" style="height:60%;" /></div>
+                                <div class="col-sm"><img class="d-block w-100" src="https://picsum.photos/100" alt="5 slide" style="height:60%;" /></div>
+                                <div class="col-sm"><img class="d-block w-100" src="https://picsum.photos100" alt="6 slide" style="height:60%;" /></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+</odoo>

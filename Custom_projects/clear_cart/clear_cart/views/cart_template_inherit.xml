@@ -1,0 +1,15 @@
+<odoo>
+    <template id="cart_template_inherit" inherit_id="website_sale.cart" name="Clear Cart">
+        <xpath expr="//div[hasclass('oe_cart')]" position="inside">
+            
+                <div class="container" t-if="request.website.sale_get_order().order_line">
+                    <form action="/clear_cart" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                        <button type="submit" class="btn btn-primary my_clear_cart" style="margin-bottom:10px">Clear Cart</button>
+                        <br></br>
+                    </form>
+                </div>
+            
+        </xpath>
+    </template>
+</odoo>

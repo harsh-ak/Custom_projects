@@ -1,0 +1,7 @@
+<odoo>
+    <!-- TEMPLATE TO REMOVE PRICE FROM SUGGESTED PRODUCTS -->
+    <template id="suggested_product_template_inherit" inherit_id="website_sale.suggested_products_list" name="Remove Price">
+        <xpath expr="//td[hasclass('td-price')]" position="replace">
+        </xpath>
+    </template>
+</odoo>

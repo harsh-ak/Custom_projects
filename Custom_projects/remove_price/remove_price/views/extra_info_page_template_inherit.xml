@@ -1,0 +1,11 @@
+<odoo>
+	<template id="extra_info_page_template_inherit" inherit_id="website_sale.cart_summary" name="Remove Price">
+         	 <!-- TO REMOVE HEADING -->
+        <xpath expr="//th[hasclass('td-price')]" position="replace">
+        </xpath>
+        <!-- TO REMOVE COLUMN -->
+        <xpath expr="//td[hasclass('td-price')]" position="replace">
+        </xpath>
+       
+	</template>
+</odoo>

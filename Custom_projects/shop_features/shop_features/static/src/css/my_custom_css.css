@@ -1,0 +1,15 @@
+/*.my_attributes {
+    display: block;
+}
+
+.oe_product:hover > .my_attributes{
+    color: red;
+    display: none;
+    }*/
+
+
+h6.o_wsale_products_item_title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

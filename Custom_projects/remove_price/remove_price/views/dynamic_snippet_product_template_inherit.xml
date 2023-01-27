@@ -1,0 +1,7 @@
+<odoo>
+	<!-- TEMPLATE TO REMOVE PRICE FROM DYNAMIC SNIPPET OF PRODUCTS -->
+	<template id="dynamic_snippet_product_template_inherit" inherit_id="website_sale.price_dynamic_filter_template_product_product">
+		<xpath expr="//span[hasclass('fw-bold')]" position="replace">
+        </xpath>
+	</template>
+</odoo>

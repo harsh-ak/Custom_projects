@@ -1,0 +1,16 @@
+<odoo>
+<!-- PRODUCT BRAND ACTION -->
+
+<record id="action_product_brand"
+		model="ir.actions.act_window">
+		<field name="name">Product Brand</field>
+		<field name="res_model">product.brand</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+<!-- PRODUCT BRAND MENU -->
+
+<menuitem id="product_brand_menu"
+	action="action_product_brand"
+	name="Product Brands"
+	parent="website_sale.menu_catalog"/>
+</odoo>

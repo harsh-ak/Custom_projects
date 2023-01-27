@@ -1,0 +1,7 @@
+<odoo>
+    <!-- SHOP PAGE TEMPLATE INHERIT TO REMOVE PRICE -->
+    <template id="product_info_template_inherit" inherit_id="website_sale.products_item" name="Remove Price">
+        <xpath expr="//div[hasclass('product_price')]" position="replace">
+            </xpath>
+    </template>
+</odoo>

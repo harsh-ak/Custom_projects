@@ -1,0 +1,16 @@
+<odoo>
+    <template id="cart_template_inherit" inherit_id="website_sale.cart_popover" name="Cart Count">
+        <xpath expr="//span[hasclass('o_wsale_cart_quantity')]" position="attributes">
+            <attribute name="t-esc">len(
+            request.website.sale_get_order().order_line)</attribute>
+            
+        </xpath>
+    </template>
+
+    <template id="cart_hover_inherit" inherit_id="website_sale.header_cart_link" name="Cart">
+        <xpath expr="//t[@t-set='website_sale_cart_quantity']" position="attributes">
+            <attribute name="t-value">len(
+            request.website.sale_get_order().order_line)</attribute>    
+        </xpath>
+    </template>
+</odoo>

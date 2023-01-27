@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+shop_features.access_product_template_tabs,access_product_template_tabs,shop_features.model_product_template_tabs,base.group_user,1,1,1,1
+shop_features.access_product_template_tabs_public,access_product_template_tabs_public,shop_features.model_product_template_tabs,base.group_public,1,0,0,0

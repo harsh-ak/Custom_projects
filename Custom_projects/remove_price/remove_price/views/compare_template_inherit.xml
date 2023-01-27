@@ -1,0 +1,13 @@
+<odoo>
+
+	<!-- TEMPLATE TO REMOVE PRICE FROM COMPARISION PAGE -->
+	<template id="compare_product_template_inherit" inherit_id="website_sale_comparison.product_compare">
+		 <xpath expr="//span[@t-else='']" position="replace">
+        </xpath>
+	</template>
+<!-- TEMPLATE TO REMOVE PRICE FROM COMPARISION DILOG BOX -->
+	<template id="compare_product_dialog_template_inherit" inherit_id="website_sale_comparison.product_product">
+		 <xpath expr="//span" position="replace">
+        </xpath>
+	</template>
+</odoo>

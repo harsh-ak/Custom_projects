@@ -1,0 +1,19 @@
+<odoo>
+    <!-- PRODUCT PAGE TEMPLATE INHERIT TO REMOVE PRICE. -->
+    <template id="product_page_template_inherit" inherit_id="website_sale.product_price" name="Remove Price">
+        <xpath expr="//div[contains(@t-attf-class, 'product_price')]" position="replace">
+        </xpath>
+    </template>
+    <!-- TEMPLATE TO REMOVE BASE UNIT PRICE -->
+    <template id="product_page_template_base_unit_priceinherit" inherit_id="website_sale.base_unit_price" name="Remove Price">
+        <xpath expr="//span[hasclass('o_base_unit_price')]" position="replace">
+        </xpath>
+        <xpath expr="//span[hasclass('oe_custom_base_unit')]" position="replace">
+        </xpath>
+    </template>
+    <!-- TEMPLATE TO REMOVE BADGE PRICE OF VARIANT -->
+    <template id="sale_badge_extra_price_template_inherit" inherit_id="sale.badge_extra_price" name="Remove Badge Price">
+        <xpath expr="//span[hasclass('badge')]" position="replace">
+        </xpath>
+    </template>
+</odoo>

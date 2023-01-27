@@ -1,0 +1,9 @@
+<odoo>
+
+	<!-- TEMPLATE TO REMOVE PRICE FROM WISHLIST PAGE -->
+	<template id="wishlist_product_template_inherit" inherit_id="website_sale_wishlist.product_wishlist">
+		 <xpath expr="//td[hasclass('o_wish_price')]" position="replace">
+        </xpath>
+
+	</template>
+</odoo>

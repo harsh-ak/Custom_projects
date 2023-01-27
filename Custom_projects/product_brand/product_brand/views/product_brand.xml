@@ -1,0 +1,26 @@
+<odoo>
+	<record id="view_product_brand_form" model="ir.ui.view">
+		<field name="name">product.brand</field>
+		<field name="model">product.brand</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<field class="oe_avatar" name="logo" widget="image"/>
+					<group>
+						<group>
+							<field name="name"/>
+							<field name="website_id"/>
+						</group>
+						<group>
+							<field name="is_published"/>
+						</group>
+						<group>
+							<field name="product_ids" widget="one2many_list"/>
+						</group>
+						 <button name="%(add_product_wizard_action)d" string="Add Product" type="action"/>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+</odoo>

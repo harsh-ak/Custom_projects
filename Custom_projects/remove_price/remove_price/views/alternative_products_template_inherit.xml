@@ -1,0 +1,20 @@
+<odoo>
+	<!-- TEMPLATE TO REMOVE CONFIGURATOR -->
+	<template id="optional_product_template_inherit" inherit_id="sale_product_configurator.configure_optional_products" name="Remove Price">
+
+		 <xpath expr="//th[hasclass('td-price')]" position="replace">
+        </xpath>
+        <!-- TO REMOVE COLUMN -->
+        <xpath expr="//td[hasclass('td-price')]" position="replace">
+        </xpath>
+        <!-- TO REMOVE TOTAL -->
+        <xpath expr="//tr[hasclass('o_total_row')]" position="replace">
+        </xpath>
+	</template>
+	<!-- TEMPLATE TO REMOVE PRICE FROM AVAIALABLE OPTIONS -->
+
+	<template id="available_product_template_inherit" inherit_id="sale_product_configurator.optional_product_items" name="Remove Price">
+		<xpath expr="//div[hasclass('oe_price')]" position="replace">
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,18 @@
+<odoo>
+    <!-- REGISTERING BASIC SNIPPET -->
+    <template id="snippet_1" inherit_id="website.snippets" name="Static Snippet 1">
+        <xpath expr="//div[@id='snippet_structure']/div[hasclass('o_panel_body')]" position="inside">
+            <t t-snippet="snippet_task.snippet_template_1" />
+        </xpath>
+    </template>
+    <template id="snippet_2" inherit_id="website.snippets" name="Innert Content Snippet">
+        <xpath expr="//div[@id='snippet_content']/div[hasclass('o_panel_body')]" position="inside">
+            <t t-snippet="snippet_task.snippet_template_2" />
+        </xpath>
+    </template>
+    <template id="snippet_3" inherit_id="website.snippets" name="Static Snippet 2">
+        <xpath expr="//div[@id='snippet_structure']/div[hasclass('o_panel_body')]" position="inside">
+            <t t-snippet="snippet_task.snippet_template_3" />
+        </xpath>
+    </template>
+</odoo>

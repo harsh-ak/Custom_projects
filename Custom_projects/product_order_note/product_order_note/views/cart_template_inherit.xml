@@ -1,0 +1,22 @@
+<odoo>
+    <template id="cart_template_inherit" inherit_id="website_sale.cart" name="Order Note">
+        <xpath expr="//div[hasclass('row')]//div[5]" position="after">
+            <div id="wrap">
+            <div class="container" style="border-style:double; margin-bottom:10px;">
+                <form action="/get_order_note" method="post" enctype="multipart/form-data">
+
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                      <div class="form-group">
+                        <label for="getnote">Order Note</label>
+                        <input type="text" class="form-control" name="note" placeholder="Enter Some Description Here." id="getnote"/>
+                      </div>
+                      
+                      <button type="submit" class="btn btn-primary" style="margin-bottom:10px">Submit</button>
+                      <br></br>
+                </form>
+            </div>
+        </div>
+        </xpath>
+    </template>
+</odoo>
